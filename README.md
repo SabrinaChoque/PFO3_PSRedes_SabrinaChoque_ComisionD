@@ -33,7 +33,7 @@ Es el núcleo del sistema. Escucha las peticiones de los clientes mediante socke
 
 Este diseño permite ilustrar el funcionamiento de un sistema distribuido real, donde los clientes se comunican con un servidor central que delega el trabajo a múltiples *workers*, logrando escalabilidad y procesamiento paralelo.
 
-![Diagrama del sistema distribuido](Diagrama_pfo3.png)
+![Diagrama del sistema distribuido](diagrama_pfo3.png)
 
 ## server.py
 El archivo `server.py` actúa como el **centro del sistema distribuido**.  
@@ -120,7 +120,7 @@ El archivo `client.py` representa al **cliente del sistema**, encargado de envia
 - **Interfaz de usuario simple:** presenta un menú de comandos en la consola para probar el sistema.
 
 ### Comandos disponibles:
-![Comandos Disponibles](Comandos.png)
+![Comandos Disponibles](comandos.png)
 
 ### Ejemplo de flujo:
 1. El cliente envía → `{"op":"uppercase","data":"hola mundo"}`
