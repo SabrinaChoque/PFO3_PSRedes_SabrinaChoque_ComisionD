@@ -84,10 +84,10 @@ Simula el comportamiento de un sistema como **RabbitMQ**, pero usando la librer�
 - Garantiza comunicación segura entre hilos gracias al módulo `queue`.
 
 ### Código base:
-```python
+python:
 from queue import Queue
 
-# Cola global de tareas (simula RabbitMQ)
+#Cola global de tareas (simula RabbitMQ)
 task_queue = Queue()
 
 ## storage.py
