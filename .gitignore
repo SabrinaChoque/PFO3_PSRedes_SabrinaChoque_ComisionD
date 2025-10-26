@@ -1,0 +1,13 @@
+# --- .gitignore para PFO3 Sabrina Choque ---
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+
+# Base de datos local (SQLite)
+*.sqlite
+
+# Carpeta de resultados JSON simulando S3
+/data/
+
+# Archivos temporales (por seguridad)
+*.tmp
