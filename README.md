@@ -33,11 +33,13 @@ Es el núcleo del sistema. Escucha las peticiones de los clientes mediante socke
 
 Este diseño permite ilustrar el funcionamiento de un sistema distribuido real, donde los clientes se comunican con un servidor central que delega el trabajo a múltiples *workers*, logrando escalabilidad y procesamiento paralelo.
 
-![Diagrama del sistema distribuido](diagrama_pfo3.png)
+![Diagrama del sistema distribuido](diagrama.png)
 
 ## server.py
 El archivo `server.py` actúa como el **centro del sistema distribuido**.  
 Se encarga de escuchar conexiones TCP desde los clientes, recibir tareas en formato JSON y distribuirlas entre varios *workers* (hilos) mediante una **cola de mensajes**.
+
+![alt text](arranque_server.png)
 
 ### Funciones principales:
 - **Recibir tareas:** escucha en el puerto 5001 y acepta conexiones.
@@ -112,6 +114,7 @@ De esta forma el sistema conserva trazabilidad de todas las tareas procesadas, s
 
 ## client.py
 El archivo `client.py` representa al **cliente del sistema**, encargado de enviar tareas al servidor y mostrar los resultados.
+![clienteTerminal](cliente.png)
 
 ### Funciones principales:
 - **Conexión TCP:** se conecta al servidor (127.0.0.1:5001) mediante sockets.
@@ -120,15 +123,37 @@ El archivo `client.py` representa al **cliente del sistema**, encargado de envia
 - **Interfaz de usuario simple:** presenta un menú de comandos en la consola para probar el sistema.
 
 ### Comandos disponibles:
-![Comandos Disponibles](comandos.png)
+![Comandos Disponibles](comando.png)
 
 ### Ejemplo de flujo:
 1. El cliente envía → `{"op":"uppercase","data":"hola mundo"}`
 2. El servidor procesa y devuelve → `{"status":"ok","worker":"worker-1","result":"HOLA MUNDO"}`
 3. El cliente muestra el resultado en pantalla.
-
+![ResultadoCliente](resultadoCliente.png)
 ### Resumen:
 `client.py` permite simular el rol de un usuario que interactúa con el sistema distribuido.  
 Sirve para comprobar la comunicación completa: **Cliente → Servidor → Cola → Worker → Almacenamiento → Respuesta.**
+### Comprendimos:
+Que el proyecto logra simular una **arquitectura distribuida cliente-servidor**, aplicando los conceptos vistos en la materia:
+- Comunicación por **sockets TCP**.
+- Distribución de tareas mediante una **cola de mensajes** (simulando RabbitMQ).
+- Procesamiento concurrente con **múltiples workers (hilos)**.
+- **Persistencia distribuida simulada**, con base de datos (SQLite) y archivos tipo S3.
+- Flujo completo desde el **cliente → servidor → worker → almacenamiento → respuesta.**
 
+El sistema demuestra cómo dividir la carga de trabajo y cómo los servicios pueden cooperar entre sí para mejorar rendimiento y disponibilidad.
+
+### Posibles mejoras de lo aprendido
+Para una versión más avanzada o de entorno real, se podrían implementar:
+**PostgreSQL real** en lugar de SQLite, usando `psycopg2` o `SQLAlchemy`.
+**RabbitMQ o Redis** como sistema de mensajería real entre procesos.
+**Balanceador de carga (Nginx / HAProxy)** para distribuir peticiones entre varios servidores.
+**Almacenamiento S3 real** (AWS, MinIO) para guardar resultados en la nube.
+**Seguridad**: agregar cifrado TLS y autenticación de clientes.
+**Cliente web** (por ejemplo, con Flask o React) para simular accesos desde interfaces gráficas.
+**Gestión de logs y monitoreo** (por ejemplo, con Prometheus o Grafana).
+
+
+Esta práctica permitió comprender cómo los diferentes componentes (clientes, servidores, colas, workers y almacenamiento) cooperan dentro de un **sistema distribuido**.  
+A pesar de ser una simulación local, representa fielmente los fundamentos de una arquitectura moderna usada en entornos reales de redes y DevOps.
 

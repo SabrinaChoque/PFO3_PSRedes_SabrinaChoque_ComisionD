@@ -1,0 +1,12 @@
+{
+  "task": {
+    "id": "b14703d4-ff5e-4937-9820-341a2666a826",
+    "op": "hash",
+    "data": "secreto"
+  },
+  "result": {
+    "status": "ok",
+    "worker": "worker-2",
+    "result": "df733656293a19c54f69093ba916f0a1a2a3c151fc95c13f3a794c2631eeb3a6"
+  }
+}

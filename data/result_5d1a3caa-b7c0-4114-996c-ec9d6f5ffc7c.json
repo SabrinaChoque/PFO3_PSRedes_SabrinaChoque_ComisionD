@@ -1,0 +1,12 @@
+{
+  "task": {
+    "id": "5d1a3caa-b7c0-4114-996c-ec9d6f5ffc7c",
+    "op": "uppercase",
+    "data": "hola mundo"
+  },
+  "result": {
+    "status": "ok",
+    "worker": "worker-1",
+    "result": "HOLA MUNDO"
+  }
+}
