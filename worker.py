@@ -20,7 +20,7 @@ class Worker(threading.Thread):
             try:
                 result = self.process(task)
 
-                # ⚠️ IMPORTANTE: crear una versión "segura" de la tarea sin reply_queue
+                # IMPORTANTE: crear una versión "segura" de la tarea sin reply_queue
                 safe_task = {k: v for k, v in task.items() if k != "reply_queue"}
 
                 # Persistimos resultado (DB + "S3" JSON)
